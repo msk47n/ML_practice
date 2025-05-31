@@ -1,5 +1,5 @@
 import numpy as np
-
+#random comment
 def convert_image(img_size):
   image_dir = f'{i}'
   img = Image.open(image_dir).convert('L')
