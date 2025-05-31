@@ -1,5 +1,14 @@
 import numpy as np
 
+def convert_image(img_size):
+  image_dir = f'{i}'
+  img = Image.open(image_dir).convert('L')
+  img = img.resize(img_size)
+  # Convert to numpy array and normalize
+  img_array = np.array(img) / 255.0  # Normalize to [0, 1]
+  img_flattened = img_array.flatten()  # Flatten to 1D (for neural net)
+  return img_flattened
+
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
