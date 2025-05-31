@@ -1,6 +1,14 @@
 import numpy as np
-#random comment
+# random comment
 def convert_image(img_size):
+  """
+  To convert images
+
+  Arguments: 
+    Image_size
+  Return:
+    Image_Changes
+  """
   image_dir = f'{i}'
   img = Image.open(image_dir).convert('L')
   img = img.resize(img_size)
