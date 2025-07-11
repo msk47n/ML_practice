@@ -1,0 +1,76 @@
+/* Default (light mode) */
+:root{
+    --primary-color: #fff;
+    --secondary-color: #101011;
+    --input-bg: #fff;
+    --input-text: #000;
+    --input-border: #ced4da;
+}
+
+/* Dark mode overrides */
+.dark-mode {
+    --primary-color: #101011;
+    --secondary-color: #fff;
+    --input-bg: #2c2c2c;
+    --input-text: #f1f1f1;
+    --input-border: #555;
+}
+
+.body {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.navbar {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.block-spacing{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+#darkmode-icon{
+    width: 30px;
+    cursor: pointer;
+}
+
+/* input-groups & forms */
+.input-group-text,
+.form-control {
+    background-color: var(--input-bg) !important;
+    color: var(--input-text) !important;
+    border-color: var(--input-border) !important;
+    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+}
+
+.form-control::placeholder {
+    color: var(--input-text);
+    opacity: 0.6;
+    transition: color 0.5s ease;
+}
+
+.dark-mode .form-control::placeholder {
+    color: var(--input-text); 
+    opacity: 0.6;
+    transition: color 0.5s ease;
+}
+
+/* table actions buttons */
+.action-buttons {
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .action-buttons {
+        text-align: center;
+    }
+}
