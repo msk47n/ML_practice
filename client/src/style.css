@@ -45,6 +45,7 @@
 
 /* input-groups & forms */
 .input-group-text,
+.form-floating,
 .form-control {
     background-color: var(--input-bg) !important;
     color: var(--input-text) !important;
@@ -67,6 +68,13 @@
 /* table actions buttons */
 .action-buttons {
     text-align: left;
+}
+
+@media (min-width: 576px) {
+    .form-control,
+    .input-group {
+        width: 300px;
+    }
 }
 
 @media (max-width: 768px) {

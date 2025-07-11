@@ -26,29 +26,43 @@
         </div>
     </div>
     <hr />
+
     <div class="px-3 py-3">
         <p class="fs-2 fw-semibold">Entry Details here</p>
         <div class="input-group mb-3">
             <span class="input-group-text">Shop Name</span>
-            <input type="text" class="form-control" id="store-name" placeholder="Store Name">
+            <input type="text" class="form-control" id="store-name" oninput="storeTempFormData()" placeholder="Store Name">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text">Purchase Date</span>
-            <input type="date" class="form-control" name="" id="purchase-date">
+            <input type="date" class="form-control" name="" id="purchase-date" oninput="storeTempFormData()">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text">Payment Method</span>
-            <input type="text" class="form-control" id="payment-method" placeholder="Credit Card or Cash?">
+            <select type="text" class="form-floating" id="payment-method" oninput="storeTempFormData()" placeholder="Credit Card or Cash?">
+                <option selected value="Credit Card">Credit Cash</option>
+                <option value="Cash">Cash</option>
+                <option value="Debit Card">Debit Card</option>
+                <option value="Other">Other</option>
+            </select>
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text">Final Price</span>
-            <input type="number" class="form-control" id="final-price" step="0.01" placeholder="Price with Taxes">
+            <input type="number" class="form-control" id="final-price" step="0.01" oninput="storeTempFormData()" placeholder="Price with Taxes">
+        </div>
+        <div class="input-group mb-3">
+            <span for="comments" class="input-group-text">Comments</span>
+            <textarea class="form-control" id="comments" rows="1" placeholder="Footnotes or Reminders"></textarea>
         </div>
         <button type="button" class="btn btn-primary btn-lg" onclick="addRow()">Submit</button>
-        <button type="button" class="btn btn-success btn-lg" onclick="">Download All</button>
-        <button type="button" class="btn btn-primary btn-lg">Import</button>
+        <button type="button" class="btn btn-success btn-lg" onclick="exportTableAsZip()">Download All</button>
+        <label class="btn btn-primary">
+            Import ZIP File
+            <input type="file" accept=".zip" hidden onchange="importZipFile(this.files[0])">
+        </label>
     </div>
     <hr />
+
     <div class="block-spacing">
         <p class="mb-3 fs-2 fw-semibold">Table Summary</p>
         <table class="table table-hover table-bordered" id="order-table">
@@ -58,7 +72,8 @@
                 <th scope="col">Shop Name</th>
                 <th scope="col">Purchase Date</th>
                 <th scope="col">Image Capture</th>
-                <th scope="col">Payment</th>
+                <th scope="col">Payment Method</th>
+                <th scope="col">Comments</th>
                 <th scope="col">Final Price</th>
                 <th scope="col">Action</th>
                 </tr>
@@ -69,16 +84,22 @@
         </table>
     </div>
     <hr />
-    <div class="block-spacing fs-1">
-        <div id="totalDisplay">Grand Total: $0.00</div>
-    </div>
-    <script>
 
-        
-    </script>
+    <div class="block-spacing fs-1">
+        <div id="total-display">Grand Total: $0.00</div>
+    </div>
+
     <script src="client/src/index.js"></script>
     <script src="client/src/image-display.js"></script>
     <script src="client/src/table.js"></script>
+    <script src="client/src/export-import.js"></script>
+
+    <!-- CSS Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    
+    <!-- JSZip -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
 </body>
 </html>

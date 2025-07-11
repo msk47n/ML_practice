@@ -2,25 +2,6 @@ const darkModeIcon = document.getElementById("darkmode-icon");
 const body = document.body;
 const table = document.getElementById("order-table");
 
-function applyDarkModeStyles(isDark) {
-    const formControls = document.querySelectorAll(".form-control");
-    const inputGroups = document.querySelectorAll(".input-group-text");
-
-    formControls.forEach(el => {
-        el.style.transition = "all 0.5s ease";
-        el.style.backgroundColor = isDark ? "#2c2c2c" : "#fffff";
-        el.style.color = isDark ? "#f1f1f1" : "#000000";
-        el.style.borderColor = isDark ? "#555" : "#ced4da";
-    });
-
-    inputGroups.forEach(el => {
-        el.style.transition = "all 0.5s ease";
-        el.style.backgroundColor = isDark ? "#2c2c2c" : "#fffff";
-        el.style.color = isDark ? "#f1f1f1" : "#000000";
-        el.style.borderColor = isDark ? "#555" : "#ced4da";
-    });
-}
-
 // Initial theme on load
 if (localStorage.getItem("theme") === "dark") {
     body.classList.add("dark-mode");
@@ -46,6 +27,4 @@ darkModeIcon.addEventListener("click", () => {
         localStorage.setItem("theme", "light");
         darkModeIcon.src = "client/assets/images/moon.png";
     }
-
-    // applyDarkModeStyles(isDark);
 });

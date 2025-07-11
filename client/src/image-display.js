@@ -13,6 +13,7 @@ function showImage(srcInput,targetImage) {
         targetImage.style.height = "auto";
 
         localStorage.setItem("tempImage", base64Image);
+        storeTempFormData(); 
     };
 
     srcInput.addEventListener("change", function() {
